@@ -4,16 +4,37 @@ html{
 
 *, *::before, *::after{
     box-sizing: inherit;
+    /* background-color: black; */
 }
 
 #grid-container{
-    border: 1px solid red;
+    border: 1px solid goldenrod;
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
     width: 503px;
     height: 501px;
 }
+
+.title{
+    background-color: gold;
+    height: 30px;
+    font-size: large;
+    font-weight: 900;
+    text-align: center;
+    text-decoration: underline;
+    height: 42px;
+}
+
+a{
+    vertical-align: middle;
+    color: inherit;
+}
+
+body{
+    margin: 0;
+}
+
 
 
 
