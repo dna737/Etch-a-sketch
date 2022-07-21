@@ -1,6 +1,11 @@
 let container = document.querySelector('#grid-container');
 buildGrid();
 
+let canvas = document.querySelectorAll(".pixel"); //all pixels constitute the canvas.
+canvas.forEach(element => {
+    element.addEventListener('mouseover', () => {element.style.backgroundColor = "black"});
+});
+
 
 //creating the grid:
 function buildGrid(rowSize = 4){
@@ -21,10 +26,7 @@ for(let i = 1; i <= rowSize ** 2 ;i++){
 
 
 
-let canvas = document.querySelectorAll(".pixel"); //all pixels constitute the canvas.
-canvas.forEach(element => {
-    element.addEventListener('mouseover', () => {element.style.backgroundColor = "black"});
-});
+
 
 
 function clearGrid(){
