@@ -9,10 +9,20 @@
 </head>
 <body>
     <div class="title"><a href="https://www.youtube.com/shorts/LNew965FXZs">Etch-a-sketch</a></div>
+    <div class="main-content">
     <div class="side-panel">
-        <button class="change-gridsize panel-button">Resize grid!</button>
+        <label for="colorpicker">Color Picker:</label>
+        <input type="color" id="colorpicker" value="#0000ff">
+        <button class="change-gridsize panel-button">Resize grid</button>
+        <button class="clear-grid panel-button">Clear canvas</button>
+        <button class="eraser">Toggle Eraser</button>
+        <button class="toggle-grid">Toggle Gridlines</button>
     </div>
+    <div class="canvas-info">
+    <p class="dimension-specifier"></p>
     <div id="grid-container"></div>
+    </div>
+    </div>
     <script src="./script.js"></script>
 </body>
 </html>
