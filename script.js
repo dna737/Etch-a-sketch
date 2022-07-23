@@ -5,7 +5,8 @@ const eraseButton = document.querySelector('.eraser');
 const clearCanvas = document.querySelector('.clear-grid');
 const gridLine = document.querySelector(".toggle-grid");
 const rainbow = document.querySelector(".rainbow-mode");
-let chosenColor = "black"; //default color
+let chosenColor = "black"; //The color chosen by the user. Black by default.
+const shadowButton = document.querySelector(".shading-mode");
 
 
 //creating the grid:
@@ -26,7 +27,7 @@ for(let i = 1; i <= rowSize ** 2 ;i++){
 }
 let canvas = document.querySelectorAll(".pixel"); //all pixels constitute the canvas.
 canvas.forEach(element => {
-    element.addEventListener('mouseover', () => {element.style.backgroundColor = chosenColor});
+    element.addEventListener("mouseover" , () => {element.style.backgroundColor = chosenColor});
 });
 }
 }
@@ -44,12 +45,12 @@ eraseButton.addEventListener('click', () => {
 
     if(eraseButton.classList.contains("clicked")){
     canvas.forEach(element => {
-    element.addEventListener('mouseover', () => {element.style.backgroundColor = "white"});
+    element.addEventListener('mouseenter', () => {element.style.backgroundColor = "white"});
     rainbow.classList.remove("clicked");
 }); 
     }else{
         canvas.forEach(element => {
-            element.addEventListener('mouseover', () => {element.style.backgroundColor = "black"});
+            element.addEventListener('mouseenter', () => {element.style.backgroundColor = "black"});
         });
     }
 });
@@ -66,10 +67,14 @@ function updateCanvas(){
     }
     if(rainbow.classList.contains("clicked")){
         canvas.forEach(pixel => {
-            pixel.addEventListener('mouseover', () => {pixel.style.backgroundColor = "" + generateRandomColor()});
+            pixel.addEventListener('mouseenter', () => {pixel.style.backgroundColor = "" + generateRandomColor()});
         });
     }
 }
+
+shadowButton.addEventListener('click', () => {
+    shadowButton.classList.add("clicked");
+})
 
 //changing the size of the grid:
 const sizeButton = document.querySelector(".change-gridsize");
@@ -96,17 +101,23 @@ gridLine.addEventListener('click', () => {
     }
 });
 
+window.addEventListener('load', () => {
+
+});
+
+
+
 rainbow.addEventListener('click', () => {
     let canvas = document.querySelectorAll(".pixel");
     rainbow.classList.toggle("clicked");
     if(rainbow.classList.contains("clicked")){
         //this means that rainbow mode is now active.
         canvas.forEach(pixel => {
-        pixel.addEventListener('mouseover', () => {pixel.style.backgroundColor = "" + generateRandomColor()});
+        pixel.addEventListener('mouseenter', () => {pixel.style.backgroundColor = "" + generateRandomColor()});
         });
     }else{
         canvas.forEach(element => {
-            element.addEventListener('mouseover', () => {element.style.backgroundColor = "black"});
+            element.addEventListener('mouseenter', () => {element.style.backgroundColor = "black"});
         });
     }
 })

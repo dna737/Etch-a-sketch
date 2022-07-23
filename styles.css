@@ -1,4 +1,6 @@
-
+/* *{
+  background-color: grey;
+} */
 
 #grid-container{
     border: 1px solid gold;
@@ -215,7 +217,11 @@ button{
 
   /* Still need to pull off this hovering effect for each pixel*/
 .pixel:hover{
-  transition: hover-effect 4s;
+  transition: all 0.4s;
+}
+
+.pixel{
+  background-color: white;
 }
 
 @keyframes hover-effect{
