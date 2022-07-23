@@ -5,6 +5,8 @@ const eraseButton = document.querySelector('.eraser');
 const clearCanvas = document.querySelector('.clear-grid');
 const gridLine = document.querySelector(".toggle-grid");
 const rainbow = document.querySelector(".rainbow-mode");
+let chosenColor = "black"; //default color
+
 
 //creating the grid:
 function buildGrid(rowSize = 16){
@@ -24,7 +26,7 @@ for(let i = 1; i <= rowSize ** 2 ;i++){
 }
 let canvas = document.querySelectorAll(".pixel"); //all pixels constitute the canvas.
 canvas.forEach(element => {
-    element.addEventListener('mouseover', () => {element.style.backgroundColor = "black"});
+    element.addEventListener('mouseover', () => {element.style.backgroundColor = chosenColor});
 });
 }
 }
@@ -120,7 +122,9 @@ function generateRandomColor(){
     return `#${randColor.toUpperCase()}`
 }
 
-
-
+const colorPicker = document.querySelector("#colorpicker");
+colorPicker.addEventListener('input', () => {
+     chosenColor = colorPicker.value;
+})
 
     

@@ -47,9 +47,10 @@ button{
     margin: 8px;
 }
 
-/* .showBorders{
-    border: 2 px solid white;
-} */
+#colorpicker{
+  margin: 0 auto;
+  margin-top: 20px;
+}
 
 /* Rainbow animation for the borders: */
 .rainbow {
