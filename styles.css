@@ -1,11 +1,4 @@
-html{
-    /* box-sizing: border-box; */
-}
 
-*, *::before, *::after{
-    box-sizing: inherit;
-    /* background-color: black; */
-}
 
 #grid-container{
     border: 1px solid gold;
@@ -218,6 +211,37 @@ button{
       color: #e87d7d;
     }
   }
+
+  /* Still need to pull off this hovering effect for each pixel*/
+.pixel:hover{
+  transition: hover-effect 4s;
+}
+
+@keyframes hover-effect{
+  0%{
+    filter: brightness()
+  }
+
+  20%{
+    filter: brightness(180%);
+  }
+
+  40%{
+    filter: brightness(160%);
+  }
+
+  60%{
+    filter: brightness(140%);
+  }
+
+  80%{
+    filter: brightness(120%);
+  }
+
+  100%{
+    filter: brightness(100%);
+  }
+}
  
 
 

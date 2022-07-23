@@ -4,6 +4,7 @@ let rowSize = 16; //Keeps a track of the canvas's dimensions.
 const eraseButton = document.querySelector('.eraser');
 const clearCanvas = document.querySelector('.clear-grid');
 const gridLine = document.querySelector(".toggle-grid");
+const rainbow = document.querySelector(".rainbow-mode");
 
 //creating the grid:
 function buildGrid(rowSize = 16){
@@ -35,17 +36,6 @@ function clearGrid(){
  eraseButton.classList.remove("clicked");
 }
 
-function updateCanvas(){
-    clearGrid();
-    buildGrid(rowSize);
-    if(gridLine.classList.contains("clicked")){
-        let canvas = document.querySelectorAll(".pixel");
-        canvas.forEach(pixel => {pixel.style.border = "1px solid black"
-        pixel.style.boxSizing = "border-box"});
-}
-}
-
-
 eraseButton.addEventListener('click', () => {
     eraseButton.classList.toggle("clicked");
     canvas = document.querySelectorAll(".pixel"); //all pixels constitute the canvas.
@@ -53,7 +43,8 @@ eraseButton.addEventListener('click', () => {
     if(eraseButton.classList.contains("clicked")){
     canvas.forEach(element => {
     element.addEventListener('mouseover', () => {element.style.backgroundColor = "white"});
-});
+    rainbow.classList.remove("clicked");
+}); 
     }else{
         canvas.forEach(element => {
             element.addEventListener('mouseover', () => {element.style.backgroundColor = "black"});
@@ -62,6 +53,21 @@ eraseButton.addEventListener('click', () => {
 });
 
 clearCanvas.addEventListener("click", updateCanvas);
+
+function updateCanvas(){
+    clearGrid();
+    buildGrid(rowSize);
+    let canvas = document.querySelectorAll(".pixel");
+    if(gridLine.classList.contains("clicked")){
+        canvas.forEach(pixel => {pixel.style.border = "1px solid black"
+        pixel.style.boxSizing = "border-box"});
+    }
+    if(rainbow.classList.contains("clicked")){
+        canvas.forEach(pixel => {
+            pixel.addEventListener('mouseover', () => {pixel.style.backgroundColor = "" + generateRandomColor()});
+        });
+    }
+}
 
 //changing the size of the grid:
 const sizeButton = document.querySelector(".change-gridsize");
@@ -86,7 +92,33 @@ gridLine.addEventListener('click', () => {
     allPixels.forEach(pixel => {pixel.style.border = "none"
     pixel.style.boxSizing = "border-box"});
     }
+});
+
+rainbow.addEventListener('click', () => {
+    let canvas = document.querySelectorAll(".pixel");
+    rainbow.classList.toggle("clicked");
+    if(rainbow.classList.contains("clicked")){
+        //this means that rainbow mode is now active.
+        canvas.forEach(pixel => {
+        pixel.addEventListener('mouseover', () => {pixel.style.backgroundColor = "" + generateRandomColor()});
+        });
+    }else{
+        canvas.forEach(element => {
+            element.addEventListener('mouseover', () => {element.style.backgroundColor = "black"});
+        });
+    }
 })
+
+
+//Used for rainbow mode:
+function generateRandomColor(){
+    let maxVal = 0xFFFFFF; // 16777215
+    let randomNumber = Math.random() * maxVal; 
+    randomNumber = Math.floor(randomNumber);
+    randomNumber = randomNumber.toString(16);
+    let randColor = randomNumber.padStart(6, 0);   
+    return `#${randColor.toUpperCase()}`
+}
 
 
 
