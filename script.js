@@ -6,8 +6,10 @@ const clearCanvas = document.querySelector('.clear-grid');
 const gridLine = document.querySelector(".toggle-grid");
 const rainbow = document.querySelector(".rainbow-mode");
 let chosenColor = "black"; //The color chosen by the user. Black by default.
-const shadowButton = document.querySelector(".shading-mode");
+// const shadowButton = document.querySelector(".shading-mode");
 
+//changes the default color of the color input to black once the page loads up.
+window.addEventListener('load', () => document.querySelector('input[type="color"]').value = "black");
 
 //creating the grid:
 function buildGrid(rowSize = 16){
@@ -50,7 +52,7 @@ eraseButton.addEventListener('click', () => {
 }); 
     }else{
         canvas.forEach(element => {
-            element.addEventListener('mouseenter', () => {element.style.backgroundColor = "black"});
+            element.addEventListener('mouseenter', () => {element.style.backgroundColor = chosenColor});
         });
     }
 });
@@ -72,9 +74,6 @@ function updateCanvas(){
     }
 }
 
-shadowButton.addEventListener('click', () => {
-    shadowButton.classList.add("clicked");
-})
 
 //changing the size of the grid:
 const sizeButton = document.querySelector(".change-gridsize");
@@ -101,9 +100,7 @@ gridLine.addEventListener('click', () => {
     }
 });
 
-window.addEventListener('load', () => {
 
-});
 
 
 
@@ -117,7 +114,7 @@ rainbow.addEventListener('click', () => {
         });
     }else{
         canvas.forEach(element => {
-            element.addEventListener('mouseenter', () => {element.style.backgroundColor = "black"});
+            element.addEventListener('mouseenter', () => {element.style.backgroundColor = chosenColor});
         });
     }
 })
@@ -136,6 +133,50 @@ function generateRandomColor(){
 const colorPicker = document.querySelector("#colorpicker");
 colorPicker.addEventListener('input', () => {
      chosenColor = colorPicker.value;
-})
+});
+
+// shadowButton.addEventListener('click', () => {
+//   shadowButton.classList.toggle("clicked");
+//   let canvas = document.querySelectorAll(".pixel");
+//   if(shadowButton.classList.contains("clicked")){
+//     canvas.forEach(element => {
+//       element.addEventListener('mouseenter', darken);
+//     });
+//   } else {
+//     canvas.forEach(element => {
+//       element.removeEventListener('mouseenter', darken);
+//       element.style.backgroundColor = chosenColor;
+//     });
+//   }
+// });
+
+// function LightenDarkenColor(col, amt) {
+//     var usePound = false;
+  
+//     if (col[0] == "#") {
+//       col = col.slice(1);
+//       usePound = true;
+//     }
+  
+//     var num = parseInt(col, 16);
+  
+//     var r = (num >> 16) + amt;
+  
+//     if (r > 255) r = 255;
+//     else if (r < 0) r = 0;
+  
+//     var b = ((num >> 8) & 0x00FF) + amt;
+  
+//     if (b > 255) b = 255;
+//     else if (b < 0) b = 0;
+  
+//     var g = (num & 0x0000FF) + amt;
+  
+//     if (g > 255) g = 255;
+//     else if (g < 0) g = 0;
+  
+//     return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
+//   }
+  
 
     
