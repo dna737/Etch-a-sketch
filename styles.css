@@ -1,24 +1,37 @@
-/* *{
-  background-color: grey;
-} */
+*{
+  background-color: #1E1B1C;
+}
 
 #grid-container{
     border: 1px solid gold;
     display: flex;
     flex-wrap: wrap;
     width: 500.5px;
-    height: 500.5px;
+    height: 500px;
 }
 
-.title{
-    background-color: gold;
-    height: 30px;
-    font-size: large;
-    font-weight: 900;
-    text-align: center;
-    text-decoration: underline;
-    height: 42px;
+#logo{
+    width: 400px;
+    height: 100px;
+    display: block;
+    margin: auto;
+    /* margin-top: 0.2em; */
 }
+
+.dimension-specifier{
+  animation: dimension 4s infinite;
+}
+
+@keyframes dimension{
+  20%{
+    color: orange;
+  }
+
+  100%{
+    color: black;
+  }
+}
+
 
 a{
     vertical-align: middle;
@@ -47,6 +60,7 @@ body{
 
 button{
     margin: 8px;
+    color: yellow;
 }
 
 #colorpicker{
@@ -59,7 +73,7 @@ button{
     animation: 4s rainbow 1s infinite;
   }
 
-@keyframes rainbow {
+/* @keyframes rainbow {
     0% {
       color: #e87d7d;
     }
@@ -213,42 +227,21 @@ button{
     100% {
       color: #e87d7d;
     }
-  }
+  } */
 
-  /* Still need to pull off this hovering effect for each pixel*/
 .pixel:hover{
-  transition: all 0.4s;
+  transition: all 0.1896s;
 }
 
 .pixel{
   background-color: white;
 }
 
-@keyframes hover-effect{
-  0%{
-    filter: brightness()
-  }
 
-  20%{
-    filter: brightness(180%);
-  }
 
-  40%{
-    filter: brightness(160%);
-  }
 
-  60%{
-    filter: brightness(140%);
-  }
 
-  80%{
-    filter: brightness(120%);
-  }
 
-  100%{
-    filter: brightness(100%);
-  }
-}
  
 
 
